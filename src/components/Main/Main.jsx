@@ -8,6 +8,9 @@ import {
   Divider,
 } from "@material-ui/core";
 import useStyles from "./styles";
+
+import Form from "./Form/Form";
+
 const Main = () => {
   const classes = useStyles();
   return (
@@ -30,7 +33,8 @@ const Main = () => {
           Try saying: Add income for ₹100 in salary category for Friday...
         </Typography>
         <Divider />
-        {/* TODO: form will be here */}
+        {/* input form goes here */}
+        <Form />
       </CardContent>
       <CardContent className={classes.cartContent}>
         <Grid container spacing={2}>
