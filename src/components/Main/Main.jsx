@@ -7,13 +7,16 @@ import {
   Grid,
   Divider,
 } from "@material-ui/core";
-import Details from "../Details/Details";
-
+import useStyles from "./styles";
 const Main = () => {
+  const classes = useStyles();
   return (
-    <div>
-      <Details title="Main" />
-    </div>
+    <Card className={classes.root}>
+      <CardHeader
+        title="Voice Powered Expense Tracker"
+        subheader="By Pushpak Bhattacharya"
+      />
+    </Card>
   );
 };
 
