@@ -5,6 +5,7 @@ import useStyles from "./styles";
 
 // custom components
 import Details from "./components/Details/Details";
+import Main from "./components/Main/Main";
 
 const App = () => {
   const classes = useStyles();
@@ -23,7 +24,7 @@ const App = () => {
           <Details title="Income" />
         </Grid>
         <Grid item xs={12} sm={4}>
-          Main
+          <Main />
         </Grid>
         <Grid item xs={12} sm={4}>
           <Details title="Expenses" />
