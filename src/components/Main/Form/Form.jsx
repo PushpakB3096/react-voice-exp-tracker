@@ -16,6 +16,7 @@ import {
   incomeCategories,
   expenseCategories,
 } from "../../../constants/category";
+import formatDate from "../../../utils/formatDate";
 import useStyles from "./styles";
 
 // state of initial form
@@ -23,7 +24,7 @@ const initialFormState = {
   type: "Income",
   category: "",
   amount: "",
-  date: new Date(),
+  date: formatDate(new Date()),
 };
 const Form = () => {
   const classes = useStyles();
@@ -107,7 +108,9 @@ const Form = () => {
           type="date"
           label="Date"
           value={formData.date}
-          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, date: formatDate(e.target.value) })
+          }
           fullWidth
         />
       </Grid>
