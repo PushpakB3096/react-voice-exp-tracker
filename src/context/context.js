@@ -47,6 +47,12 @@ export const Provider = ({ children }) => {
   // use of reducer for adding or deleting transactions
   const [transactions, dispatch] = useReducer(contextReducer, initialState);
 
+  const balance = transactions.reduce((accumulator, currVal) => {
+    return currVal.type === "Income"
+      ? accumulator + currVal.amount
+      : accumulator - currVal.amount;
+  }, 0);
+
   // action creator to delete a transaction
   const deleteTransaction = (id) => {
     dispatch({
@@ -68,6 +74,7 @@ export const Provider = ({ children }) => {
         deleteTransaction,
         addTransaction,
         transactions,
+        balance,
       }}
     >
       {children}
