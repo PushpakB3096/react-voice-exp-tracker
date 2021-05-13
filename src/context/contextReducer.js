@@ -7,9 +7,10 @@ const contextReducer = (state, action) => {
         (transaction) => transaction.id !== action.payload
       );
       return transactions;
-    case " ADD_TRANSACTION":
+    case "ADD_TRANSACTION":
       // first add the new transaction so that it appears on the top of the list then add the remaining transactions
       transactions = [action.payload, ...state];
+      console.log(transactions);
       return transactions;
     default:
       // in all other cases, return the list of transactions as is
