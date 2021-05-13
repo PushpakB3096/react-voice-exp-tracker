@@ -9,6 +9,8 @@ import {
   Select,
   MenuItem,
 } from "@material-ui/core";
+import { v4 as uuidv4 } from "uuid";
+
 import { ExpenseTrackerContext } from "../../../context/context";
 import useStyles from "./styles";
 
@@ -31,11 +33,14 @@ const Form = () => {
       ...formData,
       // convert amount from string to a number
       amount: Number(formData.amount),
+      // generates a random ID using UUID and sets it
+      id: uuidv4(),
     };
 
-    console.log(newTransaction);
     // add the new transaction to the state
     addTransaction(newTransaction);
+    // clear the form after adding the new transaction
+    setFormData(initialFormState);
   };
 
   return (
