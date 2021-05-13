@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   TextField,
   Typography,
@@ -49,6 +49,37 @@ const Form = () => {
     // clear the form after adding the new transaction
     setFormData(initialFormState);
   };
+
+  useEffect(() => {
+    if (segment) {
+      // the below 2 if blocks will check and set the type of transaction
+      if (segment.intent.intent === "add_expense") {
+        setFormData({
+          ...formData,
+          type: "Expenses",
+        });
+      } else if (segment.intent.intent === "add_income") {
+        setFormData({
+          ...formData,
+          type: "Income",
+        });
+      }
+      // isFinal will be true when the user has released the mic button and finished talking
+      else if (
+        segment.isFinal &&
+        segment.intent.intent === "create_transaction"
+      ) {
+        // saves the transaction only when user says so
+        return createTransaction();
+      } else if (
+        segment.isFinal &&
+        segment.intent.intent === "cancel_transaction"
+      ) {
+        // clearing the transaction means setting the form to intial state
+        setFormData(initialFormState);
+      }
+    }
+  }, [segment]);
 
   // prefill the categories to be shown based on the type of transaction selected
   const selectedCategoryType =
