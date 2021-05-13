@@ -8,7 +8,7 @@ const formatDate = (dateObj) => {
     because we need to convert it to string
     */
   let month = `${date.getMonth() + 1}`;
-  let day = date.getDate();
+  let day = `${date.getDate()}`;
   const year = date.getFullYear();
 
   // Material UI expects single digit months and days to be prepended with a zero
