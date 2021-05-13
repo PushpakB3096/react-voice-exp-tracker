@@ -8,10 +8,12 @@ const contextReducer = (state, action) => {
       transactions = state.filter(
         (transaction) => transaction.id !== action.payload
       );
+      localStorage.setItem("transactions", JSON.stringify(transactions));
       return transactions;
     case ADD_TRANSACTION:
       // first add the new transaction so that it appears on the top of the list then add the remaining transactions
       transactions = [action.payload, ...state];
+      localStorage.setItem("transactions", JSON.stringify(transactions));
       return transactions;
     default:
       // in all other cases, return the list of transactions as is
