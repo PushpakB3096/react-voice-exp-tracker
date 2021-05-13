@@ -10,6 +10,7 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
+import { useSpeechContext } from "@speechly/react-client";
 
 import { ExpenseTrackerContext } from "../../../context/context";
 import {
@@ -30,6 +31,7 @@ const Form = () => {
   const classes = useStyles();
   const [formData, setFormData] = useState(initialFormState);
   const { addTransaction } = useContext(ExpenseTrackerContext);
+  const { segment } = useSpeechContext();
 
   // function to create a new transaction and save it to the store
   const createTransaction = () => {
@@ -57,7 +59,8 @@ const Form = () => {
       <Grid item xs={12}>
         {/* this section will display the text as we speak */}
         <Typography align="center" variant="subtitle2" gutterBottom>
-          ...
+          {/* segment holds all the words that speechly detects */}
+          {segment && segment.words.map((w) => w.value).join(" ")}
         </Typography>
       </Grid>
       {/* grid for type of entry */}
