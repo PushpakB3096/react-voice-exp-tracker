@@ -78,6 +78,54 @@ const Form = () => {
         // clearing the transaction means setting the form to intial state
         setFormData(initialFormState);
       }
+
+      segment.entities.forEach((e) => {
+        switch (e.type) {
+          case "amount":
+            setFormData({
+              ...formData,
+              amount: e.value,
+            });
+            break;
+          case "category":
+            // changing all upercase category names received from speechly to title case
+            const category = `${e.value.charAt(0)}${e.value
+              .slice(1)
+              .toLowerCase()}`;
+
+            /* 
+                Since expense and income categories are different, the combination must be enforced. 
+                User can try and enter type as income along with a category for expense. We need to
+                prevent this behaviour. If the category belongs to a certain type, we are explicitly
+                changing the type as well along with the category. The below 2 if blocks takes care
+                of that.
+              */
+            if (incomeCategories.map((ic) => ic.type).includes(category)) {
+              setFormData({
+                ...formData,
+                type: "Income",
+                category,
+              });
+            } else if (
+              expenseCategories.map((ec) => ec.type).includes(category)
+            ) {
+              setFormData({
+                ...formData,
+                type: "Expenses",
+                category,
+              });
+            }
+            break;
+          case "date":
+            setFormData({
+              ...formData,
+              date: e.value,
+            });
+            break;
+          default:
+            break;
+        }
+      });
     }
   }, [segment]);
 
