@@ -82,11 +82,7 @@ const List = () => {
             />
             {/* delete transaction button */}
             <ListItemSecondaryAction>
-              <IconButton
-                edge="end"
-                aria-label="delete"
-                onClick={deleteTransaction(transaction.id)}
-              >
+              <IconButton edge="end" aria-label="delete">
                 <Delete />
               </IconButton>
             </ListItemSecondaryAction>

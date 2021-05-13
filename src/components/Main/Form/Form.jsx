@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   TextField,
   Typography,
@@ -11,9 +11,18 @@ import {
 } from "@material-ui/core";
 import useStyles from "./styles";
 
+// state of initial form
+const initialFormState = {
+  type: "Income",
+  category: "",
+  amount: "",
+  date: new Date(),
+};
 const Form = () => {
   const classes = useStyles();
+  const [formData, setFormData] = useState(initialFormState);
 
+  console.log(formData);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -26,7 +35,10 @@ const Form = () => {
       <Grid item xs={6}>
         <FormControl fullWidth>
           <InputLabel>Type</InputLabel>
-          <Select>
+          <Select
+            value={formData.type}
+            onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+          >
             <MenuItem value="Income">Income</MenuItem>
             <MenuItem value="Expenses">Expenses</MenuItem>
           </Select>
@@ -36,7 +48,12 @@ const Form = () => {
       <Grid item xs={6}>
         <FormControl fullWidth>
           <InputLabel>Category</InputLabel>
-          <Select>
+          <Select
+            value={formData.category}
+            onChange={(e) =>
+              setFormData({ ...formData, category: e.target.value })
+            }
+          >
             <MenuItem value="salary">Salary</MenuItem>
             <MenuItem value="business">Business</MenuItem>
           </Select>
@@ -44,11 +61,23 @@ const Form = () => {
       </Grid>
       {/* grid for amount field */}
       <Grid item xs={6}>
-        <TextField type="number" label="Amount" fullWidth />
+        <TextField
+          type="number"
+          label="Amount"
+          value={formData.amount}
+          onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
+          fullWidth
+        />
       </Grid>
       {/* grid for date field */}
       <Grid item xs={6}>
-        <TextField type="date" label="Date" fullWidth />
+        <TextField
+          type="date"
+          label="Date"
+          value={formData.date}
+          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+          fullWidth
+        />
       </Grid>
       {/* create button */}
       <Button
