@@ -1,5 +1,6 @@
 import React, { useReducer, createContext } from "react";
 import contextReducer from "./contextReducer";
+import { DELETE_TRANSACTION, ADD_TRANSACTION } from "../constants/action";
 
 // initially we will have no transactions
 const initialState = [];
@@ -13,14 +14,14 @@ export const Provider = ({ children }) => {
   // action creator to delete a transaction
   const deleteTransaction = (id) => {
     dispatch({
-      type: "DELETE_TRANSACTION",
+      type: DELETE_TRANSACTION,
       payload: id,
     });
   };
   // action creator to add a transaction
   const addTransaction = (transaction) => {
     dispatch({
-      type: "ADD_TRANSACTION",
+      type: ADD_TRANSACTION,
       payload: transaction,
     });
   };
