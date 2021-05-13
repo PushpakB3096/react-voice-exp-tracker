@@ -12,6 +12,10 @@ import {
 import { v4 as uuidv4 } from "uuid";
 
 import { ExpenseTrackerContext } from "../../../context/context";
+import {
+  incomeCategories,
+  expenseCategories,
+} from "../../../constants/category";
 import useStyles from "./styles";
 
 // state of initial form
@@ -42,6 +46,10 @@ const Form = () => {
     // clear the form after adding the new transaction
     setFormData(initialFormState);
   };
+
+  // prefill the categories to be shown based on the type of transaction selected
+  const selectedCategoryType =
+    formData.type === "Income" ? incomeCategories : expenseCategories;
 
   return (
     <Grid container spacing={2}>
@@ -74,8 +82,12 @@ const Form = () => {
               setFormData({ ...formData, category: e.target.value })
             }
           >
-            <MenuItem value="salary">Salary</MenuItem>
-            <MenuItem value="business">Business</MenuItem>
+            {/* loop over the categories array and populate the menu */}
+            {selectedCategoryType.map((c) => (
+              <MenuItem key={c.type} value={c.type}>
+                {c.type}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </Grid>
