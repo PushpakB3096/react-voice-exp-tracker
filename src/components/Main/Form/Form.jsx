@@ -38,6 +38,11 @@ const Form = () => {
 
   // function to create a new transaction and save it to the store
   const createTransaction = () => {
+    // checking data integrity
+    if (Number.isNaN(Number(formData.amount)) || !formData.date.includes("-")) {
+      return;
+    }
+
     // create a structured transaction
     const newTransaction = {
       ...formData,
