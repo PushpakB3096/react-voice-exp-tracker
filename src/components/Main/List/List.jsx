@@ -18,7 +18,34 @@ const List = () => {
 
   // dummy transactions
   const transactions = [
-    { id: 1, type: "Income", category: "Salary", amount: 50, date: new Date() },
+    {
+      id: 1,
+      type: "Income",
+      category: "Salary",
+      amount: 50,
+      date: "Wed May 12",
+    },
+    {
+      id: 1,
+      type: "Expense",
+      category: "Business",
+      amount: 230,
+      date: "Wed May 11",
+    },
+    {
+      id: 1,
+      type: "Income",
+      category: "Salary",
+      amount: 500,
+      date: "Wed May 10",
+    },
+    {
+      id: 1,
+      type: "Income",
+      category: "Salary",
+      amount: 199,
+      date: "Wed May 09",
+    },
   ];
 
   return (
