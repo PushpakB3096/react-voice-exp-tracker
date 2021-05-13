@@ -18,10 +18,8 @@ import useStyles from "./styles";
 
 const List = () => {
   const classes = useStyles();
-  const globalState = useContext(ExpenseTrackerContext);
+  const { deleteTransaction } = useContext(ExpenseTrackerContext);
 
-  // TODO: remove this log
-  console.log(globalState);
   // dummy transactions
   const transactions = [
     {
@@ -84,7 +82,11 @@ const List = () => {
             />
             {/* delete transaction button */}
             <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="delete" onClick="">
+              <IconButton
+                edge="end"
+                aria-label="delete"
+                onClick={deleteTransaction(transaction.id)}
+              >
                 <Delete />
               </IconButton>
             </ListItemSecondaryAction>
