@@ -18,6 +18,7 @@ import {
   expenseCategories,
 } from "../../../constants/category";
 import formatDate from "../../../utils/formatDate";
+import CustomSnackbar from "../../Snackbar/Snackbar";
 import useStyles from "./styles";
 
 // state of initial form
@@ -30,6 +31,8 @@ const initialFormState = {
 const Form = () => {
   const classes = useStyles();
   const [formData, setFormData] = useState(initialFormState);
+  const [open, setOpen] = useState(false);
+
   const { addTransaction } = useContext(ExpenseTrackerContext);
   const { segment } = useSpeechContext();
 
@@ -46,6 +49,8 @@ const Form = () => {
 
     // add the new transaction to the state
     addTransaction(newTransaction);
+    // show MUI alert
+    setOpen(true);
     // clear the form after adding the new transaction
     setFormData(initialFormState);
   };
@@ -144,6 +149,7 @@ const Form = () => {
 
   return (
     <Grid container spacing={2}>
+      <CustomSnackbar open={open} setOpen={setOpen} />
       <Grid item xs={12}>
         {/* this section will display the text as we speak */}
         <Typography align="center" variant="subtitle2" gutterBottom>
