@@ -126,15 +126,15 @@ const Form = () => {
             break;
         }
       });
-    }
 
-    // checking to see if all fields are filled or not
-    const areAllFilled =
-      formData.amount && formData.category && formData.date && formData.type;
+      // checking to see if all fields are filled or not
+      const areAllFilled =
+        formData.amount && formData.category && formData.date && formData.type;
 
-    // if all fields are filled and the user has finished talking, then save the transaction
-    if (segment.isFinal && areAllFilled) {
-      createTransaction();
+      // if all fields are filled and the user has finished talking, then save the transaction
+      if (segment.isFinal && areAllFilled) {
+        createTransaction();
+      }
     }
   }, [segment]);
 
