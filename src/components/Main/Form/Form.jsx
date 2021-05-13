@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   TextField,
   Typography,
@@ -9,6 +9,7 @@ import {
   Select,
   MenuItem,
 } from "@material-ui/core";
+import { ExpenseTrackerContext } from "../../../context/context";
 import useStyles from "./styles";
 
 // state of initial form
@@ -21,8 +22,22 @@ const initialFormState = {
 const Form = () => {
   const classes = useStyles();
   const [formData, setFormData] = useState(initialFormState);
+  const { addTransaction } = useContext(ExpenseTrackerContext);
 
-  console.log(formData);
+  // function to create a new transaction and save it to the store
+  const createTransaction = () => {
+    // create a structured transaction
+    const newTransaction = {
+      ...formData,
+      // convert amount from string to a number
+      amount: Number(formData.amount),
+    };
+
+    console.log(newTransaction);
+    // add the new transaction to the state
+    addTransaction(newTransaction);
+  };
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -85,6 +100,7 @@ const Form = () => {
         variant="outlined"
         color="primary"
         fullWidth
+        onClick={createTransaction}
       >
         Create
       </Button>
