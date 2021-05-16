@@ -10,3 +10,16 @@ A complex voice-powered expense tracker that allows to add your transactions and
 * Context API
 * Local Storage
 * Material UI
+
+## Run This App Locally
+
+```sh
+npm install
+```
+Next you need to create a *.env* file. Add *REACT_APP_SPEECHLY_APP_ID* as the key. The App ID can be obtained by logging on to [Speechly](https://www.speechly.com/) and registering an application for free. Paste the app ID in the *.env* file.
+
+Next, run
+
+```sh
+npm start
+```
