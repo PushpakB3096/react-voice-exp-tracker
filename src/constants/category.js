@@ -1,5 +1,4 @@
 // The below colors corresponds to the colors that appear in the chart for each transaction category
-
 const incomeColors = [
   "#123123",
   "#154731",
@@ -9,8 +8,9 @@ const incomeColors = [
   "#10ac6e",
   "#0bc77e",
   "#04e38d",
-  "#00ff9d",
+  "#00ff9d"
 ];
+
 const expenseColors = [
   "#b50d12",
   "#bf2f1f",
@@ -22,7 +22,7 @@ const expenseColors = [
   "#f79d79",
   "#ffae8a",
   "#cc474b",
-  "#f55b5f",
+  "#f55b5f"
 ];
 
 export const incomeCategories = [
@@ -34,7 +34,7 @@ export const incomeCategories = [
   { type: "Gifts", amount: 0, color: incomeColors[5] },
   { type: "Salary", amount: 0, color: incomeColors[6] },
   { type: "Savings", amount: 0, color: incomeColors[7] },
-  { type: "Rental income", amount: 0, color: incomeColors[8] },
+  { type: "Rental income", amount: 0, color: incomeColors[8] }
 ];
 
 export const expenseCategories = [
@@ -48,11 +48,11 @@ export const expenseCategories = [
   { type: "Entertainment", amount: 0, color: expenseColors[7] },
   { type: "Phone", amount: 0, color: expenseColors[8] },
   { type: "Pets", amount: 0, color: expenseColors[9] },
-  { type: "Other", amount: 0, color: expenseColors[10] },
+  { type: "Other", amount: 0, color: expenseColors[10] }
 ];
 
 // function that resets all the category amount to zero
 export const resetCategories = () => {
-  incomeCategories.forEach((c) => (c.amount = 0));
-  expenseCategories.forEach((c) => (c.amount = 0));
+  incomeCategories.forEach(c => (c.amount = 0));
+  expenseCategories.forEach(c => (c.amount = 0));
 };

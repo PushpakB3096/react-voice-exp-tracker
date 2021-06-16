@@ -7,7 +7,7 @@ import {
   Avatar,
   ListItemSecondaryAction,
   IconButton,
-  Slide,
+  Slide
 } from "@material-ui/core";
 import { Delete, MoneyOff } from "@material-ui/icons";
 
@@ -22,10 +22,10 @@ const List = () => {
 
   return (
     <MUIList dense={false} className={classes.list}>
-      {transactions.map((transaction) => (
+      {transactions.map(transaction => (
         // anything inside Slide component has an animation of sliding in/out
         <Slide
-          direction="down"
+          direction='down'
           in
           mountOnEnter
           unmountOnExit
@@ -51,8 +51,8 @@ const List = () => {
             {/* delete transaction button */}
             <ListItemSecondaryAction>
               <IconButton
-                edge="end"
-                aria-label="delete"
+                edge='end'
+                aria-label='delete'
                 onClick={() => deleteTransaction(transaction.id)}
               >
                 <Delete />
