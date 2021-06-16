@@ -17,14 +17,14 @@ const CustomSnackbar = ({ open, setOpen }) => {
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={open}
-        autoHideDuration={3000} // 3 secs
+        autoHideDuration={2500} // 2.5 secs
         onClose={handleClose}
       >
         <MuiAlert
           onClose={handleClose}
-          severity="success"
+          severity='success'
           elevation={6}
-          variant="filled"
+          variant='filled'
         >
           Transaction sucessfully created!
         </MuiAlert>

@@ -7,7 +7,7 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem,
+  MenuItem
 } from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
 import { useSpeechContext } from "@speechly/react-client";
@@ -15,7 +15,7 @@ import { useSpeechContext } from "@speechly/react-client";
 import { ExpenseTrackerContext } from "../../../context/context";
 import {
   incomeCategories,
-  expenseCategories,
+  expenseCategories
 } from "../../../constants/category";
 import formatDate from "../../../utils/formatDate";
 import CustomSnackbar from "../../Snackbar/Snackbar";
@@ -26,7 +26,7 @@ const initialFormState = {
   type: "Income",
   category: "",
   amount: "",
-  date: formatDate(new Date()),
+  date: formatDate(new Date())
 };
 const Form = () => {
   const classes = useStyles();
@@ -48,8 +48,8 @@ const Form = () => {
       ...formData,
       // convert amount from string to a number
       amount: Number(formData.amount),
-      // generates a random ID using UUID and sets it
-      id: uuidv4(),
+      // generates a random ID using UUID and set it
+      id: uuidv4()
     };
 
     // add the new transaction to the state
@@ -66,12 +66,12 @@ const Form = () => {
       if (segment.intent.intent === "add_expense") {
         setFormData({
           ...formData,
-          type: "Expenses",
+          type: "Expenses"
         });
       } else if (segment.intent.intent === "add_income") {
         setFormData({
           ...formData,
-          type: "Income",
+          type: "Income"
         });
       }
       // isFinal will be true when the user has released the mic button and finished talking
@@ -89,12 +89,12 @@ const Form = () => {
         setFormData(initialFormState);
       }
 
-      segment.entities.forEach((e) => {
+      segment.entities.forEach(e => {
         switch (e.type) {
           case "amount":
             setFormData({
               ...formData,
-              amount: e.value,
+              amount: e.value
             });
             break;
           case "category":
@@ -110,26 +110,26 @@ const Form = () => {
                 changing the type as well along with the category. The below 2 if blocks takes care
                 of that.
               */
-            if (incomeCategories.map((ic) => ic.type).includes(category)) {
+            if (incomeCategories.map(ic => ic.type).includes(category)) {
               setFormData({
                 ...formData,
                 type: "Income",
-                category,
+                category
               });
             } else if (
-              expenseCategories.map((ec) => ec.type).includes(category)
+              expenseCategories.map(ec => ec.type).includes(category)
             ) {
               setFormData({
                 ...formData,
                 type: "Expenses",
-                category,
+                category
               });
             }
             break;
           case "date":
             setFormData({
               ...formData,
-              date: e.value,
+              date: e.value
             });
             break;
           default:
@@ -154,12 +154,13 @@ const Form = () => {
 
   return (
     <Grid container spacing={2}>
+      {/* popup */}
       <CustomSnackbar open={open} setOpen={setOpen} />
       <Grid item xs={12}>
         {/* this section will display the text as we speak */}
-        <Typography align="center" variant="subtitle2" gutterBottom>
+        <Typography align='center' variant='subtitle2' gutterBottom>
           {/* segment holds all the words that speechly detects */}
-          {segment && segment.words.map((w) => w.value).join(" ")}
+          {segment && segment.words.map(w => w.value).join(" ")}
         </Typography>
       </Grid>
       {/* grid for type of entry */}
@@ -168,10 +169,10 @@ const Form = () => {
           <InputLabel>Type</InputLabel>
           <Select
             value={formData.type}
-            onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+            onChange={e => setFormData({ ...formData, type: e.target.value })}
           >
-            <MenuItem value="Income">Income</MenuItem>
-            <MenuItem value="Expenses">Expenses</MenuItem>
+            <MenuItem value='Income'>Income</MenuItem>
+            <MenuItem value='Expenses'>Expenses</MenuItem>
           </Select>
         </FormControl>
       </Grid>
@@ -181,12 +182,12 @@ const Form = () => {
           <InputLabel>Category</InputLabel>
           <Select
             value={formData.category}
-            onChange={(e) =>
+            onChange={e =>
               setFormData({ ...formData, category: e.target.value })
             }
           >
             {/* loop over the categories array and populate the menu */}
-            {selectedCategoryType.map((c) => (
+            {selectedCategoryType.map(c => (
               <MenuItem key={c.type} value={c.type}>
                 {c.type}
               </MenuItem>
@@ -197,20 +198,20 @@ const Form = () => {
       {/* grid for amount field */}
       <Grid item xs={6}>
         <TextField
-          type="number"
-          label="Amount"
+          type='number'
+          label='Amount'
           value={formData.amount}
-          onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
+          onChange={e => setFormData({ ...formData, amount: e.target.value })}
           fullWidth
         />
       </Grid>
       {/* grid for date field */}
       <Grid item xs={6}>
         <TextField
-          type="date"
-          label="Date"
+          type='date'
+          label='Date'
           value={formData.date}
-          onChange={(e) =>
+          onChange={e =>
             setFormData({ ...formData, date: formatDate(e.target.value) })
           }
           fullWidth
@@ -219,8 +220,8 @@ const Form = () => {
       {/* create button */}
       <Button
         className={classes.button}
-        variant="outlined"
-        color="primary"
+        variant='outlined'
+        color='primary'
         fullWidth
         onClick={createTransaction}
       >
