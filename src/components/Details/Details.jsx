@@ -7,14 +7,15 @@ import useTransaction from "../../hooks/useTransaction";
 
 const Details = ({ title }) => {
   const classes = useStyles();
+  // custom hook that generates the total as well as the chart data based on our transactions
   const { total, chartData } = useTransaction(title);
 
   return (
     <Card className={title === "Income" ? classes.income : classes.expense}>
       <CardHeader title={title} />
       <CardContent>
-        <Typography variant="h6">₹{total}</Typography>
-        <Doughnut data={chartData} />
+        <Typography variant='h6'>₹{total}</Typography>
+        <Doughnut className={classes.chart} data={chartData} />
       </CardContent>
     </Card>
   );
