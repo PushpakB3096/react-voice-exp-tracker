@@ -9,36 +9,36 @@ const initialState = JSON.parse(localStorage.getItem("transactions")) || [
     category: "Entertainment",
     amount: 650,
     date: "2021-05-13",
-    id: "f819db8e-059d-4f4d-beec-4515a5df33a9",
+    id: "f819db8e-059d-4f4d-beec-4515a5df33a9"
   },
   {
     type: "Expenses",
     category: "Pets",
     amount: 120,
     date: "2021-05-13",
-    id: "f4584911-7f79-4b34-b045-5e01dbe225c4",
+    id: "f4584911-7f79-4b34-b045-5e01dbe225c4"
   },
   {
     type: "Income",
     category: "Deposits",
     amount: 500,
     date: "2021-05-13",
-    id: "9b25dc40-4d7c-4e1c-a6b8-6d6f3c9109bd",
+    id: "9b25dc40-4d7c-4e1c-a6b8-6d6f3c9109bd"
   },
   {
     type: "Expenses",
     category: "Bills",
     amount: 100,
     date: "2021-05-10",
-    id: "24bf82fc-1061-4693-8cef-776f75e57d7d",
+    id: "24bf82fc-1061-4693-8cef-776f75e57d7d"
   },
   {
     type: "Income",
     category: "Investments",
     amount: 50,
     date: "2021-05-13",
-    id: "a765c19e-b4df-44e2-8aa0-830c5fa4b32c",
-  },
+    id: "a765c19e-b4df-44e2-8aa0-830c5fa4b32c"
+  }
 ];
 
 export const ExpenseTrackerContext = createContext(initialState);
@@ -54,17 +54,18 @@ export const Provider = ({ children }) => {
   }, 0);
 
   // action creator to delete a transaction
-  const deleteTransaction = (id) => {
+  const deleteTransaction = id => {
     dispatch({
       type: DELETE_TRANSACTION,
-      payload: id,
+      payload: id
     });
   };
+
   // action creator to add a transaction
-  const addTransaction = (transaction) => {
+  const addTransaction = transaction => {
     dispatch({
       type: ADD_TRANSACTION,
-      payload: transaction,
+      payload: transaction
     });
   };
 
@@ -74,7 +75,7 @@ export const Provider = ({ children }) => {
         deleteTransaction,
         addTransaction,
         transactions,
-        balance,
+        balance
       }}
     >
       {children}

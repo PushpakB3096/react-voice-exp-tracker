@@ -5,7 +5,7 @@ import {
   CardContent,
   Typography,
   Grid,
-  Divider,
+  Divider
 } from "@material-ui/core";
 import useStyles from "./styles";
 import { ExpenseTrackerContext } from "../../context/context";
@@ -22,22 +22,22 @@ const Main = () => {
     <Card className={classes.root}>
       {/* header for main card goes here */}
       <CardHeader
-        title="Voice Powered Expense Tracker"
-        subheader="By Pushpak Bhattacharya"
+        title='Voice Powered Expense Tracker'
+        subheader='By Pushpak Bhattacharya'
       />
       <CardContent>
         {/* displays total balance here */}
-        <Typography align="center" variant="h6">
+        <Typography align='center' variant='h6'>
           Total Balance: ₹{balance}
         </Typography>
         {/* displays info on how to use it for the user */}
         <Typography
-          variant="subtitle2"
+          variant='subtitle2'
           style={{ lineHeight: "1.5em", marginTop: "20px" }}
         >
           <InfoCard />
         </Typography>
-        <Divider />
+        <Divider className={classes.divider} />
         {/* input form goes here */}
         <Form />
       </CardContent>
