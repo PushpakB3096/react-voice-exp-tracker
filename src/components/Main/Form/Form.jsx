@@ -89,17 +89,17 @@ const Form = () => {
         setFormData(initialFormState);
       }
 
-      segment.entities.forEach(e => {
-        switch (e.type) {
+      segment.entities.forEach(entity => {
+        switch (entity.type) {
           case "amount":
             setFormData({
               ...formData,
-              amount: e.value
+              amount: entity.value
             });
             break;
           case "category":
             // changing all upercase category names received from speechly to title case
-            const category = `${e.value.charAt(0)}${e.value
+            const category = `${entity.value.charAt(0)}${entity.value
               .slice(1)
               .toLowerCase()}`;
 
@@ -129,7 +129,7 @@ const Form = () => {
           case "date":
             setFormData({
               ...formData,
-              date: e.value
+              date: entity.value
             });
             break;
           default:

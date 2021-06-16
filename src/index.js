@@ -11,7 +11,7 @@ import "./index.css";
 ReactDOM.render(
   <SpeechProvider
     appId={process.env.REACT_APP_SPEECHLY_APP_ID}
-    language="en-US"
+    language='en-IN'
   >
     <Provider>
       <App />
